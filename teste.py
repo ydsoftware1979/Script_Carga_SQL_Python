@@ -9,6 +9,8 @@ username = 'sa'
 password = 'G@308VITBDGDfg'
 connection_string = f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}'
 
+
+
 # Criação de instância da Faker
 faker = Faker()
 
