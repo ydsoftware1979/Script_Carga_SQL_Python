@@ -3,10 +3,10 @@ from faker import Faker
 import random
 
 # Configuração da conexão com o banco de dados SQL Server
-server = 'ec2-3-83-174-1.compute-1.amazonaws.com'
-database = 'teste_alex'
-username = 'sa'
-password = 'G@308VITBDGDfg'
+server = 'Endereço_servidor_banco'
+database = 'Banco_dadps'
+username = 'Usuario_acesso'
+password = 'Senha_Acesso'
 connection_string = f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}'
 
 # Criação de instância da Faker
