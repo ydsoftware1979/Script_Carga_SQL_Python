@@ -1,34 +1,27 @@
-Scripts de Geração de Dados Fictícios
-Este repositório contém scripts em Python que geram e inserem dados fictícios em um banco de dados SQL Server usando a biblioteca pyodbc e a biblioteca Faker. Esses scripts são úteis para popular um banco de dados com dados de teste para fins de desenvolvimento e teste.
+# Fake Data Generation Scripts
 
-Scripts
-generate_certificado_colaborador_data.py: Este script gera e insere dados fictícios na tabela certificado_colaborador. Ele gera duas linhas para cada registro, uma com uma data de validade um ano antes da data atual e outra com uma data de validade um ano após a data atual.
+This repository contains a set of Python scripts for generating and inserting fake data into a SQL Server database. These scripts are useful for testing and development purposes, allowing you to quickly populate your database with mock data.
 
-generate_certificado_colaborador_data_v2.py: Semelhante ao primeiro script, ele gera e insere dados fictícios na tabela certificado_colaborador. Ele gera duas linhas para cada registro, uma com uma data de validade um ano antes da data atual e outra com uma data de validade um ano após a data atual. Esta versão do script permite personalizar o número de registros fictícios a serem gerados.
+## Scripts
 
-generate_cliente_fornecedor_data.py: Este script gera e insere dados fictícios na tabela cliente_fornecedor. Ele gera registros aleatórios com valores de cliente_id e fornecedor_id entre 1 e 30.
+### Script 1: `insert_fake_data.py`
 
-Uso
-Clone este repositório para a sua máquina local:
+- This script generates and inserts fake data into a SQL Server database using the `pyodbc` and `Faker` libraries.
+- It creates fake records in the `certificado_colaborador` table with random `colaborador_id`, `certificado_id`, and `data_validade` values.
 
-bash
-Copy code
-git clone https://github.com/seu-nome-de-usuário/seu-repo.git
-Configure os detalhes da conexão com o banco de dados nos scripts, substituindo os valores fictícios para server, database, username e password pelos seus detalhes reais de conexão com o banco de dados.
+### Script 2: `insert_fake_data_fixed.py`
 
-Instale as bibliotecas necessárias usando o pip:
+- Similar to the first script, this one generates and inserts fake data into a SQL Server database using the `pyodbc` and `Faker` libraries.
+- It creates fake records in the `certificado_colaborador` table with fixed `colaborador_id` and `certificado_id` values and random `data_validade` values.
 
-bash
-Copy code
-pip install pyodbc faker
-Execute o(s) script(s) de sua escolha para gerar e inserir dados fictícios no seu banco de dados SQL Server.
+### Script 3: `insert_fake_data_cliente_fornecedor.py`
 
-Verifique se os dados foram inseridos com sucesso.
+- This script generates and inserts fake data into a SQL Server database using the `pyodbc` library.
+- It creates fake records in the `cliente_fornecedor` table with random `cliente_id` and `fornecedor_id` values.
 
-Dependências
-pyodbc: Usado para a conexão com o banco de dados.
-Faker: Usado para a geração de dados fictícios.
-Licença
-Este projeto está licenciado sob a Licença MIT. Sinta-se à vontade para usar e modificar os scripts conforme necessário para seus próprios projetos.
+## Usage
 
-Não se esqueça de substituir "seu-nome-de-usuário/seu-repo" pela URL real do seu repositório no GitHub. Você pode expandir ainda mais este README fornecendo informações adicionais sobre o seu projeto, esquema do banco de dados ou instruções específicas de uso.
+1. Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/yourusername/your-repo.git
