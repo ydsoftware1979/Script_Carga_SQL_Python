@@ -4,10 +4,12 @@ This repository contains a set of Python scripts for generating and inserting fa
 
 ## Scripts
 
+
 ### Script 1: `insert_fake_data.py`
 
 - This script generates and inserts fake data into a SQL Server database using the `pyodbc` and `Faker` libraries.
 - It creates fake records in the `certificado_colaborador` table with random `colaborador_id`, `certificado_id`, and `data_validade` values.
+
 
 ### Script 2: `insert_fake_data_fixed.py`
 
