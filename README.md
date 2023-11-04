@@ -24,6 +24,6 @@ This repository contains a set of Python scripts for generating and inserting fa
 ## Usage
 
 1. Clone this repository to your local machine:
-
+ created by Satochi Yamamoto 
    ```bash
    git clone https://github.com/yourusername/your-repo.git
