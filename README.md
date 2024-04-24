@@ -26,4 +26,4 @@ This repository contains a set of Python scripts for generating and inserting fa
 1. Clone this repository to your local machine:
  created by Satochi Yamamoto 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone git@github.com:ydsoftware1979/Script_Carga_SQL_Python.git
