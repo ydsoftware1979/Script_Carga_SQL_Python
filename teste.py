@@ -12,6 +12,7 @@ connection_string = f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID=
 # Criação de instância da Faker
 faker = Faker()
 
+
 # Número de registros fictícios a serem gerados
 
 num_records = 100
