@@ -46,13 +46,28 @@ def generate_and_save_fake_data(num_records, filename):
         nf = random.randint(1, 999999)
         emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
         emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
-        
+        cnpj = generate_fake_cnpj()
+        valor_financeiro = round(random.uniform(100, 10000), 2)  # Valores financeiros entre 100,00 e 10000,00
+
         empresa = faker.company()
         fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
         nome = faker.name()
         emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
         emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
-        data.append({'Nº NF': nf, 'Cliente': empresa, 'name': nome, 'emissao': emissao_formatada})
+        
+        
+        
+        
+        data.append({
+            'Nº NF': nf, 
+            'emissao': emissao_formatada,
+            'Cliente': empresa, 
+            'CNPJ': cnpj,
+            'name': nome, 
+            'VALOR':  valor_financeiro
+            
+            
+        })
 
         #data.append({'Nº NF': nf, 'fornecedor_id': fornecedor_id, 'name': nome})
     df = pd.DataFrame(data)
