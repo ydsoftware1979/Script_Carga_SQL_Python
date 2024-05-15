@@ -11,7 +11,7 @@ faker = Faker('pt_BR')  # Use 'pt_BR' para dados brasileiros
 #faker = Faker()
 
 # Número de registros fictícios a serem gerados
-num_records = 100
+num_records = 500
 
 # Função para gerar CNPJ fictício formatado
 def generate_fake_cnpj():
@@ -67,8 +67,8 @@ def generate_and_save_fake_data(num_records, filename):
       produto = faker.word()
       contrato = faker.word()
       valor_sedex = round(random.uniform(10, 100), 2)  # Valores financeiros entre 100,00 e 10000,00
-      status = faker.http_status_code()
-      lote_number  = random.randint(10, 99)
+      #status = faker.http_status_code()
+      lote_number  = random.randint(10, 19)
       bobina = random.randint(1, 9)
       solicitacao = random.randint(10, 99)
       desconto = random.randint(0, 15)
@@ -77,7 +77,8 @@ def generate_and_save_fake_data(num_records, filename):
       remessa = random.randint(1, 999999)
       saida_material = random.choice(['Retira', 'Sedex'])  # Seleciona aleatoriamente 'Retira' ou 'Sedex'
       produtos = random.choice(['Produto IPEM', 'Produto IMETRO', 'Produto Selo', 'Produto Seguro', 'Selo Seguranca', 'Selo lacre', 'Selo Inspeção'])
-      codigo = random.randint(100, 999)
+      codigo = random.randint(145, 172)
+      status =  random.choice(['Status 1', 'Status 2', 'Status 3', 'Status 4', 'Status 5'])
 
       data.append({
         'Nº NF': nf, 
@@ -113,7 +114,28 @@ def generate_and_save_fake_data(num_records, filename):
 
       #data.append({'Nº NF': nf, 'fornecedor_id': fornecedor_id, 'name': nome})
     df = pd.DataFrame(data)
-    df.to_excel(filename, index=False)
+     # Estilo de formatação para adicionar bordas
+    border_style = {
+        'border': '1px solid black'
+    }
+    header_style = {
+        'border': '1px solid black',
+        'font-weight': 'bold',
+        'text-align': 'center'
+    }
+
+    # Aplicar estilos às células
+    styled_df = df.style \
+        .set_properties(**border_style) \
+        .set_properties(subset=[df.columns[0]], **header_style)  # Aplica estilo ao cabeçalho
+
+    # Salvar para Excel
+    styled_df.to_excel(filename, index=False)
+
+# Gera dados fictícios e salva em um arquivo Excel
+
+    
+    #df.to_excel(filename, index=False)
 
 
 
