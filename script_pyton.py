@@ -66,7 +66,7 @@ def generate_and_save_fake_data(num_records, filename):
         produto = faker.word()
         contrato = faker.word()
         valor_sedex = round(random.uniform(10, 100), 2)  # Valores financeiros entre 100,00 e 10000,00
-        
+        status = faker.http_status_code()
         
         
         
@@ -82,7 +82,7 @@ def generate_and_save_fake_data(num_records, filename):
             'VALOR':  valor_financeiro,
             'SEDEX PAGO PELO CLIENTE ': valor_sedex,
             'TOTAL COM SEDEX': valor_financeiro + valor_sedex ,
-            'Status' : 'null',
+            'Status' : status,
             'DATA PAGTO DO CLIENTE': 'null',
             'VALOR PAGO PELO CLIENTE': 'null',
             'SAIDA DO MATERIAL RETIRA / SEDEX': 'null',
