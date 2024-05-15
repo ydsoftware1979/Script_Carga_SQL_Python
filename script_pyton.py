@@ -1,6 +1,7 @@
 import pandas as pd
 from faker import Faker
 import random
+from datetime import datetime
 
 # Criação de instância da Faker
 faker = Faker()
@@ -22,12 +23,24 @@ def generate_and_save_fake_data(num_records, filename):
     """
     data = []
     for _ in range(num_records):
+        nf = random.randint(1, 999999)
         fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
         nome = faker.name()
-        data.append({'fornecedor_id': fornecedor_id, 'name': nome})
-    
+        emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
+        emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
+        data.append({'fornecedor_id': fornecedor_id, 'name': nome, 'emissao': emissao_formatada})
+
+        #data.append({'Nº NF': nf, 'fornecedor_id': fornecedor_id, 'name': nome})
     df = pd.DataFrame(data)
     df.to_excel(filename, index=False)
+
+
+
+
+
+
+    #df = pd.DataFrame(data)
+    #df.to_excel(filename, index=False)
 
 # Gera dados fictícios e salva em um arquivo Excel
 filename = 'dados_ficticios.xlsx'
