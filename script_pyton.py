@@ -2,6 +2,7 @@ import pandas as pd
 from faker import Faker
 import random
 from datetime import datetime
+#from math import round
 
 # Criação de instância da Faker
 faker = Faker('pt_BR')  # Use 'pt_BR' para dados brasileiros
@@ -46,63 +47,68 @@ def generate_and_save_fake_data(num_records, filename):
     """
     data = []
     for _ in range(num_records):
-        nf = random.randint(1, 999999)
-        emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
-        emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
-        cnpj = generate_fake_cnpj()
-        valor_financeiro = round(random.uniform(100, 10000), 2)  # Valores financeiros entre 100,00 e 10000,00
-        qtd = random.randint(1, 99)
-        cod = random.randint(1, 99)
-        endereco = faker.address()
-        empresa = faker.company()
-        cidade = faker.city()
-        fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
-        nome = faker.name()
-        emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
-        emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
-        #produto = faker.product_name()
-        #teste = faker.random_company_product()
-        cnpj2 = faker.cnpj()
-        produto = faker.word()
-        contrato = faker.word()
-        valor_sedex = round(random.uniform(10, 100), 2)  # Valores financeiros entre 100,00 e 10000,00
-        status = faker.http_status_code()
+      nf = random.randint(1, 999999)
+      emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
+      emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
+      cnpj = generate_fake_cnpj()
+      valor_financeiro = round(random.uniform(100, 10000), 2)  # Valores financeiros entre 100,00 e 10000,00
+      qtd = random.randint(1, 99)
+      cod = random.randint(1, 99)
+      endereco = faker.address()
+      empresa = faker.company()
+      cidade = faker.city()
+      fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
+      nome = faker.name()
+      emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
+      emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
+      #produto = faker.product_name()
+      #teste = faker.random_company_product()
+      cnpj2 = faker.cnpj()
+      produto = faker.word()
+      contrato = faker.word()
+      valor_sedex = round(random.uniform(10, 100), 2)  # Valores financeiros entre 100,00 e 10000,00
+      status = faker.http_status_code()
+      lote_number  = random.randint(10, 99)
+      bobina = random.randint(1, 9)
+      solicitacao = random.randint(10, 99)
+      desconto = random.randint(0, 15)
+      emissao2 = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
+      emissao_formatada2 = emissao2.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA,
+      remessa = random.randint(1, 999999)
+
+      data.append({
+        'Nº NF': nf, 
+        'emissao': emissao_formatada,
+        'Cliente': empresa, 
+        'CNPJ': cnpj,
+        'QUANT.': qtd,
+        'CÓD.': 'null',
+        'Produto' : produto,
+        'Contrato' : contrato,
+        'VALOR':  valor_financeiro,
+        'SEDEX PAGO PELO CLIENTE ': valor_sedex,
+        'TOTAL COM SEDEX': (valor_financeiro + valor_sedex)  ,
+        'Status' : status,
+        'DATA PAGTO DO CLIENTE': emissao_formatada2,
+        'VALOR PAGO PELO CLIENTE': round(  (valor_financeiro + valor_sedex)- ((valor_financeiro + valor_sedex)*(desconto / 100)),2),
+        'SAIDA DO MATERIAL RETIRA / SEDEX': 'null',
+        'NOTA DE REMESSA': remessa,
+        'SOLICITAÇÃO': solicitacao,
+        'LOTE': '2023/'+ str(lote_number),
+        'BOBINA': bobina,
+
+
+
+
+        #'name': nome, 
+        #'endereco': endereco,
+        #'cidade' : cidade,
+        #'VALOR':  valor_financeiro
         
         
-        
-        data.append({
-            'Nº NF': nf, 
-            'emissao': emissao_formatada,
-            'Cliente': empresa, 
-            'CNPJ': cnpj,
-            'QUANT.': qtd,
-            'CÓD.': 'null',
-            'Produto' : produto,
-            'Contrato' : contrato,
-            'VALOR':  valor_financeiro,
-            'SEDEX PAGO PELO CLIENTE ': valor_sedex,
-            'TOTAL COM SEDEX': valor_financeiro + valor_sedex ,
-            'Status' : status,
-            'DATA PAGTO DO CLIENTE': 'null',
-            'VALOR PAGO PELO CLIENTE': 'null',
-            'SAIDA DO MATERIAL RETIRA / SEDEX': 'null',
-            'NOTA DE REMESSA': 'null',
-            'SOLICITAÇÃO': 'null',
-            'LOTE': '',
-            'BOBINA': 'null',
+      })
 
-
-
-
-            'name': nome, 
-            'endereco': endereco,
-            'cidade' : cidade,
-            'VALOR':  valor_financeiro
-            
-            
-        })
-
-        #data.append({'Nº NF': nf, 'fornecedor_id': fornecedor_id, 'name': nome})
+      #data.append({'Nº NF': nf, 'fornecedor_id': fornecedor_id, 'name': nome})
     df = pd.DataFrame(data)
     df.to_excel(filename, index=False)
 
