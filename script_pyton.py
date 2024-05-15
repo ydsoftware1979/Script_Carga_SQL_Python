@@ -4,7 +4,10 @@ import random
 from datetime import datetime
 
 # Criação de instância da Faker
-faker = Faker()
+faker = Faker('pt_BR')  # Use 'pt_BR' para dados brasileiros
+
+# Criação de instância da Faker
+#faker = Faker()
 
 # Número de registros fictícios a serem gerados
 num_records = 100
@@ -48,12 +51,21 @@ def generate_and_save_fake_data(num_records, filename):
         emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
         cnpj = generate_fake_cnpj()
         valor_financeiro = round(random.uniform(100, 10000), 2)  # Valores financeiros entre 100,00 e 10000,00
-
+        qtd = random.randint(1, 99)
+        cod = random.randint(1, 99)
+        endereco = faker.address()
         empresa = faker.company()
+        cidade = faker.city()
         fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
         nome = faker.name()
         emissao = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
         emissao_formatada = emissao.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA
+        #produto = faker.product_name()
+        #teste = faker.random_company_product()
+        cnpj2 = faker.cnpj()
+        produto = faker.word()
+        contrato = faker.word()
+        valor_sedex = round(random.uniform(10, 100), 2)  # Valores financeiros entre 100,00 e 10000,00
         
         
         
@@ -63,7 +75,28 @@ def generate_and_save_fake_data(num_records, filename):
             'emissao': emissao_formatada,
             'Cliente': empresa, 
             'CNPJ': cnpj,
+            'QUANT.': qtd,
+            'CÓD.': 'null',
+            'Produto' : produto,
+            'Contrato' : contrato,
+            'VALOR':  valor_financeiro,
+            'SEDEX PAGO PELO CLIENTE ': valor_sedex,
+            'TOTAL COM SEDEX': valor_financeiro + valor_sedex ,
+            'Status' : 'null',
+            'DATA PAGTO DO CLIENTE': 'null',
+            'VALOR PAGO PELO CLIENTE': 'null',
+            'SAIDA DO MATERIAL RETIRA / SEDEX': 'null',
+            'NOTA DE REMESSA': 'null',
+            'SOLICITAÇÃO': 'null',
+            'LOTE': '',
+            'BOBINA': 'null',
+
+
+
+
             'name': nome, 
+            'endereco': endereco,
+            'cidade' : cidade,
             'VALOR':  valor_financeiro
             
             

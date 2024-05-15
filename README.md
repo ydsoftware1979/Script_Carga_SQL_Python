@@ -1,5 +1,10 @@
 # Fake Data Generation Scripts
 
+os dados são trabalhado com a bibliote Faker do Pyton para gerar dados ficticios
+
+
+
+
 This repository contains a set of Python scripts for generating and inserting fake data into a SQL Server database. These scripts are useful for testing and development purposes, allowing you to quickly populate your database with mock data.
 
 ## Scripts
