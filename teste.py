@@ -19,6 +19,16 @@ num_records = 100
 
 # Função para gerar e inserir dados fictícios na tabela
 def insert_fake_data(connection, num_records):
+    """
+    Inserts fake data into the 'fornecedor' table.
+
+    Args:
+        connection: The database connection object.
+        num_records: The number of fake records to insert.
+
+    Returns:
+        None
+    """
     cursor = connection.cursor()
     for _ in range(num_records):
         fornecedor_id = random.randint(1, 999999)  # Gere IDs únicos (neste exemplo)
