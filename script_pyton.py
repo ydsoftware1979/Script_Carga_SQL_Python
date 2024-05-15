@@ -75,6 +75,9 @@ def generate_and_save_fake_data(num_records, filename):
       emissao2 = faker.date_between(start_date='-1y', end_date='today')  # Data de emissão no último ano até hoje
       emissao_formatada2 = emissao2.strftime('%d/%m/%Y')  # Formata a data para DD/MM/AAAA,
       remessa = random.randint(1, 999999)
+      saida_material = random.choice(['Retira', 'Sedex'])  # Seleciona aleatoriamente 'Retira' ou 'Sedex'
+      produtos = random.choice(['Produto IPEM', 'Produto IMETRO', 'Produto Selo', 'Produto Seguro', 'Selo Seguranca', 'Selo lacre', 'Selo Inspeção'])
+      codigo = random.randint(100, 999)
 
       data.append({
         'Nº NF': nf, 
@@ -82,16 +85,16 @@ def generate_and_save_fake_data(num_records, filename):
         'Cliente': empresa, 
         'CNPJ': cnpj,
         'QUANT.': qtd,
-        'CÓD.': 'null',
-        'Produto' : produto,
+        'CÓD.': codigo,
+        'Produto' : produtos,
         'Contrato' : contrato,
         'VALOR':  valor_financeiro,
         'SEDEX PAGO PELO CLIENTE ': valor_sedex,
         'TOTAL COM SEDEX': (valor_financeiro + valor_sedex)  ,
         'Status' : status,
         'DATA PAGTO DO CLIENTE': emissao_formatada2,
-        'VALOR PAGO PELO CLIENTE': round(  (valor_financeiro + valor_sedex)- ((valor_financeiro + valor_sedex)*(desconto / 100)),2),
-        'SAIDA DO MATERIAL RETIRA / SEDEX': 'null',
+        'VALOR PAGO PELO CLIENTE': round(  (valor_financeiro + valor_sedex) - ((valor_financeiro + valor_sedex)*(desconto / 100)),2),
+        'SAIDA DO MATERIAL RETIRA / SEDEX': saida_material,
         'NOTA DE REMESSA': remessa,
         'SOLICITAÇÃO': solicitacao,
         'LOTE': '2023/'+ str(lote_number),
